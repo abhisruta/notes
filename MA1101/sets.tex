@@ -1,0 +1,183 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage[a4paper, portrait, margin=0.75in]{geometry}
+\usepackage{cases}
+
+\begin{document}
+    
+    \title{Naive Set Theory}
+    \subtitle{
+        \color{Brown}{Instructor: Saugata Bandopadhyay} \\ {\small \color{darkgray}{Department of Mathematics and Statistics, IISER Kolkata}}}
+    \maketitle
+
+    \vspace{-2em}
+
+    \section{Notion of Sets}
+    A \emph{set} is a collection of objects which are known as elements or members. Elements of a set can be anything, such as numbers, lines, students, fishes, and even sets.\footnote{Here we are not going to Axiomatic Definition of Sets, rather taking "Naive" approach. To be precise, ZFC axioms can eliminate paradoxes and ambiguities.}. Just as a box can be empty, a set can be empty as well. We denote \emph{empty set} as \(\phi\). A set containing single element called \emph{singleton set}.
+    
+    \begin{definition}
+        We shall use uppercase letters to label sets and lowercase letters to label elements in a set. And, let \(A\) be set and \(x\) be an object. Then, we write: \begin{itemize}
+            \item \(x \in A\) if \(x\) is an element of \(A\).
+            \item \(x \notin A\) if \(x\) is not an element of \(A\).
+        \end{itemize}
+    \end{definition}
+
+    \begin{remark}
+        Note that, \(\phi \neq \left\{\phi\right\}\) and \(a \neq \left\{a\right\}\).
+    \end{remark}
+
+    \section{Basic Terminologies}
+    Since a set is defined by its elements, we write a set by listing/defining its elements by two ways.
+    \begin{enumerate}
+        \item \textbf{Roster Method}
+        \item \textbf{Set-Builder Method}
+    \end{enumerate}
+    \begin{definition}[Empty Set]
+        The set that has no element is called empty set. We denote the empty set as \(\phi\). Furthermore, we call a set \(A\) non-empty, if \(A \neq \phi\), if A has atleast one elementin it.
+    \end{definition}
+    \begin{remark}
+        Same as Remark 1.2.
+    \end{remark}
+    \begin{definition}[\vocab{Subset}]
+        Let \(A, B\) be two sets. We say that \(A\) is a subset of \(B\), denoted by \(A \subseteq B\), if every element of \(A\) is also an element of \(B\).
+    \end{definition}
+    \begin{definition}[\vocab{Equality of Sets}]
+        Let \(A, B\) be two sets. We say that \(A\) and \(B\) are equal, denoted by \(A = B\), if \(A \subseteq B\) and \(B \subseteq A\), i.e., every element of \(A\) is also an element of \(B\) and vice versa.
+    \end{definition}
+    \begin{definition}[\vocab{Proper Subset}]
+        Let \(A, B\) be two sets. We say that \(A\) is a proper subset of \(B\), denoted by \(A \subset B\), if \(A \subseteq B\) and \(A \neq B\).
+    \end{definition}
+
+    \section{Operations on Sets}
+    In this section, we introduce various set operations that allow us generate new sets.
+    \begin{definition}
+        Let \(A, B\) be two sets. Then, 
+        \begin{itemize}
+            \item \vocab{Union.} The union of \(A\) and \(B\), denoted by \(A \cup B\), is defined as: \[A \cup B \defeq \left\{x : x \in A \vee x \in B\right\}\]
+            \item \vocab{Intersection.} The intersection of \(A\) and \(B\), denoted by \(A \cap B\), is defined as: \[A \cap B \defeq \left\{x : x \in A \wedge x \in B\right\}\]
+            \item \vocab{Difference.} The intersection of \(A\) and \(B\), denoted by \(A \setminus B\), is defined as: \[A \setminus B \defeq \left\{x : x \in A \wedge x \notin B\right\}\]
+            \item \vocab{Symmetric Difference.} The intersection of \(A\) and \(B\), denoted by \(A \triangle B\), is defined as: \[A \triangle B \defeq \left(A \setminus B\right) \cup \left(B \setminus A\right)\]
+        \end{itemize}
+    \end{definition}
+    \begin{example}
+        Let \(A = \left\{1, 2, 3, 4, 5\right\}\) and \(B = \left\{1, 4, 6, 9\right\}\). Then: 
+        \begin{itemize}
+            \item \(A \cup B = \left\{1, 2, 3, 4, 5, 6, 9\right\}\)
+            \item \(A \cap B = \left\{1, 4\right\}\)
+            \item \(A \setminus B = \left\{2, 3, 5\right\}\)
+            \item \(B \setminus A = \left\{6, 9\right\}\)
+            \item \(A \triangle B = \left\{2, 3, 5, 6, 9\right\}\)
+        \end{itemize}
+    \end{example}
+    \begin{theorem}
+        Let \(A, B\) and \(C\) be three sets. Then:
+        \begin{enumerate}
+            \item \emph{Associativity}: \(A \cup (B \cup C) = (A \cup B) \cup C\) and \(A \cap (B \cap C) = (A \cap B) \cap C\)
+            \item \emph{Distributivity}: \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)
+            \item \emph{Commutativity}: \(A \cup B = B \cup A\) and \(A \cap B = B \cap A\)
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        Left as an exercise to the reader.
+    \end{proof}
+    \begin{definition}[\vocab{Disjoint Sets}]
+        Let \(A, B\) be two sets. We say that \(A, B\) are disjoint if \(A \cap B = \phi\), i.e., \(A, B\) have no element in common.
+    \end{definition}
+    \begin{definition}[\vocab{Complement}]
+        Let \(X\) be \emph{Universal Set} and let \(A \subseteq X\). The complement of \(A\) (relative to \(X\)) is defined as: \[A^c \defeq X \setminus A = \{x \in X : x \notin A\}\]
+    \end{definition}
+    \begin{remark}
+        It is important to define the universal set unambiguously in order to be able to talk about the complement of a set.
+
+        Also, note that, \((A^{c})^{c} = A\).
+    \end{remark}
+    \begin{theorem}[De Morgan's Law]
+        Let \(X\) be the universal set and let \(A, B \subseteq X\). Then:
+        \begin{enumerate}
+            \item \((A \cup B)^{c} = A^c \cap B^c\)
+            \item \((A \cap B)^c = A^c \cup B^c\)
+        \end{enumerate} 
+    \end{theorem}
+    \begin{proof}
+        \begin{enumerate}
+            \item Let \(x \in (A \cup B)^c = X \setminus (A \cup B)\). Then, \(x \in X\) and \(x \notin A \cup B\). Therefore, \(x \notin A\) and \(x \notin B \implies x \in X \setminus A\) and \(x \in X \setminus B \implies x \in A^c\) and \(x \in B^c \implies x \in A^c \cap B^c \). Therefore, \((A \cup B)^c \subseteq A^c \cap B^c\).
+            
+            Conversely, let \(y \in A^c \cap B^c\). Then, \(y \in X\) and \(y \notin A\) and \(y \notin B\). Therefore, \(y \notin A \cup B\). Hence, \(y \in (A \cup B)^c \implies A^c \cap B^c \subseteq (A \cup B)^c\).
+
+            By the definition of equality of set, we conclude, \[(A \cup B)^c = A^c \cap B^c\]
+            
+            \item Using (1), we have, \((A^c \cup B^c)^c = (A^c)^c \cap (B^c)^c \implies (A^c \cup B^c)^c = A \cap B \implies \left[(A^c \cup B^c)^c\right]^c\) \\ Which implies, \[A^c \cup B^c = (A \cap B)^c\]
+        \end{enumerate}
+    \end{proof}
+    \begin{definition}[\vocab{Power Set}]
+        Let \(A\) be a set. The \emph{power set of} \(A\), denoted by \(\PP(A)\) is the set of subsets of \(A\).
+    \end{definition}
+    \begin{remark}
+        Notice that,
+        \begin{itemize}
+            \item The power set of \(A\) is also defined by \(2^A\).
+            \item \(\PP(A) \neq \phi\) for any set \(A\), as \(phi \in \PP(A)\).
+            \item Let \(n \in \NN\) and let \(A\) be set of \(n\) elements. Then, \(\PP(A)\) has exactly \(2^{n}\) elements.
+        \end{itemize}
+    \end{remark}
+    \begin{example}
+        Look at the examples as follows:
+        \begin{itemize}
+            \item Let \(A = \phi\). Then, \(\PP(A) = \{\phi\}\).
+            \item Let \(A = \{\phi\}\). Then, \(\PP(A) = \{\phi, \{\phi\}\} = \{\phi, A\}\).
+            \item Let \(A = \{a, b\}\). Then, \(\PP(A) = \{\phi, \{a\}, \{b\}, A\}\).
+        \end{itemize}
+    \end{example}
+    We now introduce the notion of the cartesian product of two sets. Let us begin with the definition of an ordered pair.
+    \begin{definition}[\vocab{Ordered Pair}, \emph{informal}]
+        Let \(A, B\) be two non-empty sets and let \(a \in A, b \in B\). The \emph{ordered pair} \((a, b)\) is a notation specifying \(a\) and \(b\), in that \emph{order}.
+    \end{definition}
+    \begin{remark}
+        The definition is unsatisfactory because it is only descriptibe and based on intuitive sense of order (we didn't define order rigorously).
+
+        We shall now give a formal definition of the notion of an ordered pair that captures the main property of an ordered pair, which is described in Lemma 3.14.
+
+        There are several ways to formally define ordered pair. We here state the one given by \emph{Kuratowski (1921)}.
+    \end{remark}
+    \begin{definition}[\vocab{Ordered Pair}, \emph{formal}]
+        Let \(A, B\) be non-empty sets and let \(a \in A, b \in B\). The \emph{ordered pair} \((a,b)\) is defined as \[(a, b) \defeq \{\{a\}, \{a, b\}\}\]
+    \end{definition}
+    \begin{lemma}
+        Let \(A, B\) be non-empty sets and let \(a, x \in A\) and \(b, y \in B\). Then: \[(a, b) = (x, y) \iff a = x \wedge b = y\] 
+    \end{lemma}
+    \begin{proof}
+        Let us suppose that, \((a, b) = (x, y)\). We claim that \(a = x \wedge b = y\). We consider two cases.
+
+        \begin{description}
+            \item[Case I:] \(\mathbf{(a = b)}\) Then, \((a, b) = \{\{a\}, \{a, b\}\} = \{\{a\}, \{a\}\} = \{\{a\}\}\). \\ Therefore, \(\{x, y\} \in \{\{x\}, \{x, y\}\} = (x, y) = (a, b) = \{\{a\}\}\). \\ Which implies that, \(\{x, y\} = {a}\). Hence, \(x = y = a\), i.e., \(x = a \wedge y = a = b\).
+            \item[Case II:] \(\mathbf{(a \neq b)}\) In this case, first, we prove the claim:
+            \begin{claim}
+                \(x \neq y\) for \(a \neq b\).
+            \end{claim}
+            \begin{proof}
+                Suppose to the contrary, \(x = y\). Then, \(\{a, b\} \in (a, b) = (x, y) = \{\{x\}\}\). Which implies that \(a = b = x\), which contradicts the hypothesis. Therefore, \(x \neq y\).
+            \end{proof}
+            Next, as \(\{x\} \in (x, y) = (a, b) = \{\{a\}, \{a, b\}\}\), we have, \(\{x\} = \{a\}\) as \(\{x\} \neq \{a, b\}\) because \(a \neq b\). Hence, \(x = a\).
+
+            It remains to show that \(y = b\). We have \(\{x, y\} \in (x, y) = (a, b)\). Therefore, \(\{x, y\} = \{a, b\}\) as, \(\{x, y\} \neq \{a\}\) because, \(x \neq y\). This implies that, \(y = b\) as \(y \neq a\) because \(x \neq y\).
+
+            Therefore, \(x = a\) and \(y = b\).
+
+            Conversely, it's trivial that if \(a = x \wedge b = y\), then \((a, b) = \{\{a\}, \{a, b\}\} = \{\{x\}, \{x, y\}\} = (x, y)\)
+        \end{description}
+    \end{proof}
+    \begin{definition}[\vocab{Cartesian Product}]
+        Let \(A, B\) be two sets. The \emph{cartesian product} of \(A\) and \(B\), denoted by \(A \times B\), is defined as: \[A \times B \defeq \begin{cases}
+            \{(a, b) : a \in A, b \in B\} \quad \text{if} \quad A \neq \phi \wedge B \neq \phi \\
+            \phi, \quad \text{otherwise}
+        \end{cases}\]
+    \end{definition}
+    \begin{example}
+        Look at the examples as follows:
+        \begin{itemize}
+            \item Let \(A = \{1, 2\}, B = \{a, b, c\}\). Then, \[A \times B = \{(1, a), (1, b), (1, c), (2, a), (2, b), (2, c)\}\]
+            \item Let \(A = \{a, b\}\). Then,\[A \times A = \{(a, a), (a, b), (b, a), (b, b)\}\] 
+        \end{itemize}
+    \end{example}
+
+\end{document}
