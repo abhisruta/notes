@@ -101,7 +101,7 @@ modulus as
     \item Add one weight block on the hanger. Mass of all the weight blocks should be already written on them. If it is missing, weigh the block and write it down. The bar will depress and the pointer will move in the microscope field of view. Adjust microscope vertical position to align the pointer back to the horizontal cross wire. Note the reading of the vertical scale of the travelling microscope. 
     \item Similarly, note microscope reading for addition of 4-5 more weight blocks one after another.
     \item Then start reducing the weight one by one and each time adjust microscope to align the pointer at the horizontal cross wire and take microscope reading till the hanger is empty again. 
-    \item Record data for steps 5-8 in a table. Calculate average depression \(d\) for a given amount of mass \(m\) on the hanger.
+    \item Record data for steps 5-8 in a table. Calculate average depression \(d\) for a given amount of mass \(m\) on the hanger.\footnote{\textbf{Please turn over to next page.}}
 \end{enumerate}
 
 \newpage
@@ -204,7 +204,7 @@ Notice that, we have found the desired slope of the best fit line and that is \[
 \section{Calculation of Young's Modulus}
 From the above results, we summarise with standarizing their units: 
 \begin{itemize}
-    \item \(L = 86\) cm \(0.86\) m
+    \item \(L = 86\) cm \(= 0.86\) m
     \item \(g = 9.8\) m s\(^{-2}\)
     \item \(b = 2.55\) cm \(= 0.255\) m
     \item \(t = 4.88\) mm \(= 0.00488\) m
@@ -217,7 +217,7 @@ Plugging these values to Equation \ref{eqn:main}, yields
 \end{align}
 
 \section{Error Analysis}
-In this section, we talk about the statistical errors on doing linear regression and the experimental errors.
+In this section, we talk about the statistical errors in doing linear regression and deviation from literature value.
 \subsection{Error in Regression}
 After computing the best fit linear curve through \texttt{gnuplot}, the output went like this:
 \begin{figure}[h]
@@ -229,12 +229,29 @@ After computing the best fit linear curve through \texttt{gnuplot}, the output w
 
 \newpage
 
-Fig. \ref{fig:gnuplot} contains some information about the errors in each data point \(y_i - y\) where the set \(\{(x_i, y_i) : i = 1, 2, \cdots 6\}\) represents all the points that we found from experimental dataset. These \(y_i - y\) are called \emph{residuals}. Computation yields their varience and standard deviation as \[\sigma^2 = 0.016736; \qquad \sigma = 0.129368\] Clearly, \(\sigma\) is quite low with respect to the \(y_i\)s. So the above linear regression is acceptable.
+Fig. \ref{fig:gnuplot} contains some information about the errors in each data point \(y_i - y\) where the set \(\{(x_i, y_i) : i = 1, 2, \cdots 6\}\) represents all the points that we found from experimental dataset. These \(y_i - y\) are called \emph{residuals}. Computation yields their varience and standard deviation as 
+\begin{equation}
+    \boxed{\sigma^2 = 0.016736; \qquad \sigma = 0.129368}
+\end{equation}
+Clearly, \(\sigma\) is quite low with respect to the \(y_i\)s. So the above linear regression is acceptable.
 
 \subsection{Experimental Error}
+Due to limitations of instruments having finitely precise least counts, we have some instrumental error in the value of \(Y\) given by (it is deduced from the Equation \ref{eqn:main} by logarithmic diffenetiation): 
+\begin{equation*}
+    \frac{\delta Y}{Y} = 3\frac{\delta L}{L} + \frac{\delta b}{b} + 3\frac{\delta t}{t} + \frac{\delta m}{m} + \frac{\delta d}{d}
+\end{equation*}
+The least count values are \(\delta L = 0.001\) m, \(\delta b = 0.00002\) m, \(\delta t = 0.00001\) m, \(\delta m = 0.001\) kg, \(\delta d = 0.00001\) m. And plugging data from Page \pageref{eqn:young}, with average depression (\(d\) = 3.99 mm = 0.00399 m and average mass on the hanger (\(m\)) = 1.490 kg) we obtain 
+\begin{equation}
+    \boxed{\%\frac{\delta Y}{Y} = 1.36}
+\end{equation}
+The error is very small. So it's acceptable from experimental viewpoint.
 
+\subsection{Deviation from Literature Value}
 The literature value of Young's Modulus (\(Y\)) of Steel\footnote{Source: \url{https://www.azom.com/article.aspx?ArticleID=6117}} \(= 2.00 \times 10^{11}\). Combining this with Equation \ref{eqn:young}, we calculate the error in \(Y\): \[\Delta Y = 2.00 \times 10^{11} - 1.91 \times 10^{11} \text{ N m}^{-2} = 0.09 \times 10^{11} \text{ N m}^{-2} \]
-Then, percentage relative error in \(Y\): \[\% \frac{\Delta Y}{Y} = \frac{0.09 \times 10^{11} \text{ N m}^{-2}}{2.00 \times 10^{11} \text{ N m}^{-2}} \times 100 = 4.5\]
+Then, percentage relative error in \(Y\): 
+\begin{equation}
+    \% \frac{\Delta Y}{Y} = \frac{0.09 \times 10^{11} \text{ N m}^{-2}}{2.00 \times 10^{11} \text{ N m}^{-2}} \times 100 = \boxed{4.5}
+\end{equation}
 Observe that, \(4.5 \%\) of error is quite low for environments in general laboratories. This gives a hope to be more accurate next time we perform the experiment.
 
 \section{Conclusion}
