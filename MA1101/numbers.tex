@@ -1,0 +1,85 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage[a4paper, portrait, margin=1in]{geometry}
+\definecolor{ChadDarkBlue}{rgb}{.1,0,.2}  
+\definecolor{ChadBlue}{rgb}{.1,.1,.5}  
+\definecolor{ChadRoyal}{rgb}{.2,.2,.8}  
+%\definecolor{ChadGreen}{rgb}{0,.35,.1}
+%\definecolor{ChadGreen}{rgb}{0,.5,.25}  % Too bright
+%\definecolor{ChadGreen}{rgb}{0,.4,.2}    % Still too bright
+\definecolor{ChadBrown}{rgb}{0.5, 0, 0.2}    % Dark Green
+%\definecolor{ChadRed}{rgb}{.8,.1,.2}    % Too bright
+\definecolor{ChadRed}{rgb}{.5,0,.5}  % purple
+
+\setkomafont{pagenumber}{\itshape}
+\usepackage[headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\ohead{\bfseries \leftmark}
+\ihead{\textbf{MA1101: Mathematics I}}
+\cfoot{\pagemark}
+\ofoot{\footnotesize \texttt{Updated on \today}}
+
+
+
+\title{
+    {\Large \text{MA1101}} \\
+    {\Huge \textbf{Mathematics I}} \\
+    \vspace{5pt}
+    {\Large Autumn 2021}
+}
+\author{
+    {\large Abhisruta Maity} \\
+    {\small \textsc{21MS006}}
+}
+\date{\normalsize
+    \emph{Indian Institute of Science Education and Research, Kolkata \\
+    Mohanpur, West Bengal, 741246, India}
+}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    
+    \newpage
+
+    \section{Construction of Numbers}
+    \subsection{Construction of Integers}
+    \begin{definition}[Addition]
+        \(a + b \defeq [(m + p), (n + q)]\)
+    \end{definition}
+    \begin{definition}[Multiplication]
+        \(a \cdot b \defeq [(mp + nq), (mq + np)]\)
+    \end{definition}
+    \begin{theorem}[Properties of Addition]
+        well defined.
+    \end{theorem}
+    \begin{proof}
+        We first check \(+\) is well-defined.
+        Let \(a = [(m,n)] = [(m',n')]\) for \(m, n, m', n' \in \NN \) and \(b = [(p,q)] = [(p',q')]\) for \(p, q, p', q' \in \NN \)
+        
+
+        We now check that \(+\) is commutative. We have
+        \begin{align*}
+            a + b &= [(m,n)] + [(p,q)] \\ &= [(m+p, n+q)] \\ &= [(p+m, q+n)] \\ &= [(p,q)] + [(m,n)] \\ &= b + a
+        \end{align*}
+
+        Let us define \(x \in \ZZ\) by \[x \defeq [(n,m)]\]
+        Then, \(a+x = [(m,n)] + [(n,m)] = [(m+n, n+m)] = [(m+n, m+n)] = [(1,1)] = \bar{0}\)
+    \end{proof}
+    \begin{theorem}[Properties of Multiplication]
+        The following statements holds:
+        \begin{itemize}
+            \item ``\(\cdot\)'' is well defined.
+        \end{itemize}
+    \end{theorem}
+    \begin{proof}
+        We are going to check that the multiplication is well-defined. Let \(a, b \in \ZZ\) with \(a = [(m,n)]+ [(m'+n')]\) and \(b = [(p,q)] = [(p',q')]\)
+    \end{proof}
+    
+    \newpage
+
+    Recall that \(\ZZ = \{[(j,1)]: j \in \NN, j\geq 2\} \cup     \)
+
+    \subsection{Construction of Rational Numbers}
+\end{document}
