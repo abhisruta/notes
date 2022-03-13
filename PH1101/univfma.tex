@@ -1,0 +1,62 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+
+
+\newcommand{\ve}[1]{\vec{\mathbf{#1}}}
+
+
+\begin{document}
+
+{\large \textsc{Abhisruta Maity, 21ms006}}
+
+\section{On the Universality of the Equation \(\ve{F} = m\ve{a}\)}
+The following definitions and statements of laws are taken from \textsc{S. Chandrasekhar,} Newton's \emph{Principia} for Common Readers, \textsc{Clarendon Press \(\cdot\) Oxford}, 1995.
+    \begin{definition}[Quantity of Matter; Mass \(m\)]
+        The \emph{quantity of matter} or \emph{mass} (\(m\)) is the measure of the same arising from its density and bulk conjointly.
+    \end{definition}
+    Assuming the definition of \emph{velocity} (\(\ve{v}\)) is known to us.
+    \begin{definition}[Quantity of Motion; Momentum \(\ve{p}\)]
+        The \emph{quantity of motion} or \emph{momentum} (\(\ve{p}\)) is the measure of the same arising from the velocity (\(\ve{v}\)) and quantity of matter (\(m\)) conjointly, i.e., \[\ve{p} := m \ve{v}\]
+    \end{definition}
+    \begin{law}[Law II; Newton]
+        The change of motion is the proportional to the motive force impressed; and is made in the direction of the right line in which that force is impressed, i.e., \[\ve{F} = \dt{\ve{p}}\]
+    \end{law}
+    Now, we observe the following remark:
+    \begin{remark}[For the Case of Constant Mass]
+        If mass is taken constant with respect to time then Law II yields,
+        \begin{align*}
+            \ve{F} &= \dt{\ve{p}} \\
+            &= \dt{m\ve{v}} \\
+            &= m \dt{\ve{v}} \\
+            &= m\ve{a}
+        \end{align*}
+    \end{remark}
+    From the above remark, we can indeed conclude: 
+    \begin{conclusion}
+        Even if Law II is assumed to be \emph{universal}, the equation given in the discussion question: \(\ve{F} = m\ve{a}\) is \emph{not universal}. It only holds for \emph{objects having constant mass with respect to time.}
+
+        Note that, by principles of logic, only one counterexample to any statement or equation suffices to disprove its universality.
+    \end{conclusion}
+    Although we will consider another contextual case, which was later analysed by physicists (not originally by Newton).
+
+    \newpage 
+
+    \begin{law}[Law I and Law II; Modified; Constant Mass \(m\)]
+        Formally modified version of Law I and Law II goes as following:
+       \begin{enumerate}
+           \item A frame of reference is said to be an \emph{inertal}, if \[\ve{a} = 0 \iff \ve{F} = 0\] where \(\ve{a}\) denotes acceleration of an object of mass \(m\) and \(\ve{F}\) denotes force exerted on that object, measured in the same frame.
+           \item In an intertial frame of reference, \[\ve{F} = m\ve{a}\]where the variables are holding the usual meaning for the object.
+       \end{enumerate} 
+    \end{law}
+    Clearly, if we observe the motion of the object in a \emph{non-inertial frame of reference} (Informally saying, Law I gives us  definition of a frame of reference without \emph{zero error}, called inertal frame of reference; whereas, non-inertal frame of reference is a frame of reference having that \emph{zero error}), by hypothesis of Law II, it rejects \(\ve{F} = m\ve{a}\) to hold.
+    \begin{conclusion}
+        The equation
+        \(\ve{F} = m\ve{a}\) is not universal, since it doesn't hold in non-intertial frame of reference.
+    \end{conclusion}
+    To explicitly make it universal, we introduce a notion of \emph{fictitious forces}, which leads to the algebraic equivalence in that equation. But we have to remember it is not a physical force; constructed just to convince ourselves.
+
+    There are some other intricate cases (involving Special Theory of Relativity, Electrodynamics and sometimes Quantum Mechanics also) which is beyond the scope of this course and our knowledge, which restricts the domain of \(\ve{F} = m\ve{a}\). 
+    
+    \qed
+    
+\end{document}
