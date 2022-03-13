@@ -1,0 +1,53 @@
+f(x) = c1 + v1*x + 0.5*a1*x**2
+
+g(x) = c2 + v2*x + 0.5*a2*x**2
+
+h(x) = c3 + v3*x + 0.5*a3*x**2
+
+i(x) = c4 + v4*x + 0.5*a4*x**2
+
+j(x) = c5 + v5*x + 0.5*a5*x**2
+
+m(x) = c6 + v6*x + 0.5*a6*x**2
+
+p [-0.02:3][-0.02:1.2] "fixedmass.csv" u 1:2 pt 7 lc rgb "red" title "m = 4.13 gm", f(x) lc rgb "red", "fixedmass.csv" u 1:3 pt 7 lc rgb "blue" title "m = 3.45 gm", g(x) lc rgb "blue", "fixedmass.csv" u 1:4 pt 7 lc rgb "green" title "m = 2.76 gm", h(x) lc rgb "green", "fixedmass.csv" u 1:5 pt 7 lc rgb "magenta" title "m = 2.08 gm", i(x) lc rgb "magenta", "fixedmass.csv" u 1:6 pt 7 lc rgb "brown" title "m = 1.39 gm", j(x) lc rgb "brown", "fixedmass.csv" u 1:7 pt 7 lc rgb "royalblue" title "m = 0.70 gm", m(x) lc rgb "royalblue"
+
+fit [0:2] f(x) "fixedmass.csv" u 1:2 via c1,v1,a1
+fit [0:2] g(x) "fixedmass.csv" u 1:3 via c2,v2,a2
+fit [0:2] h(x) "fixedmass.csv" u 1:4 via c3,v3,a3
+fit [0:2] i(x) "fixedmass.csv" u 1:5 via c4,v4,a4
+fit [0:2] j(x) "fixedmass.csv" u 1:6 via c5,v5,a5
+fit [0:2] m(x) "fixedmass.csv" u 1:7 via c6,v6,a6
+
+p [-0.02:3][-0.02:1.2] "fixedmass.csv" u 8:9 pt 7 lc rgb "red" title "m = 4.13 gm", "fixedmass.csv" u 8:10 pt 7 lc rgb "blue" title "m = 3.45 gm", "fixedmass.csv" u 8:11 pt 7 lc rgb "green" title "m = 2.76 gm", "fixedmass.csv" u 8:12 pt 7 lc rgb "magenta" title "m = 2.08 gm", "fixedmass.csv" u 8:13 pt 7 lc rgb "brown" title "m = 1.39 gm", "fixedmass.csv" u 8:14 pt 7 lc rgb "royalblue" title "m = 0.70 gm"
+
+
+p [-0.02:3][-0.50:0.85] "fixedmass.csv" u 8:15 pt 7 lc rgb "red" title "m = 4.13 gm", "fixedmass.csv" u 8:16 pt 7 lc rgb "blue" title "m = 3.45 gm", "fixedmass.csv" u 8:17 pt 7 lc rgb "green" title "m = 2.76 gm", "fixedmass.csv" u 8:18 pt 7 lc rgb "magenta" title "m = 2.08 gm", "fixedmass.csv" u 8:19 pt 7 lc rgb "brown" title "m = 1.39 gm", "fixedmass.csv" u 8:20 pt 7 lc rgb "royalblue" title "m = 0.70 gm"
+
+
+p [-0.02:5][-0.02:0.5] "fixedforce.csv" u 6:7 pt 7 lc rgb "red" title "M = 400.61 gm", "fixedforce.csv" u 6:8 pt 7 lc rgb "blue" title "M = 300.47 gm", "fixedforce.csv" u 6:9 pt 7 lc rgb "brown" title "M = 200.29 gm", "fixedforce.csv" u 6:10 pt 7 lc rgb "magenta" title "M = 100.01 gm"
+
+
+p [-0.02:5][-0.50:0.85] "fixedforce.csv" u 6:11 pt 7 lc rgb "red" title "M = 400.61 gm", "fixedforce.csv" u 6:12 pt 7 lc rgb "blue" title "M = 300.47 gm", "fixedforce.csv" u 6:13 pt 7 lc rgb "brown" title "M = 200.29 gm", "fixedforce.csv" u 6:14 pt 7 lc rgb "magenta" title "M = 100.01 gm"
+
+
+p [-0.02:5][-0.02:1.2] "fixedforce.csv" u 1:2 pt 7 lc rgb "red" title "M = 400.61 gm", f(x)  lc rgb "red", "fixedforce.csv" u 1:3 pt 7 lc rgb "blue" title "M = 300.47 gm", g(x) lc rgb "blue", "fixedforce.csv" u 1:4 pt 7 lc rgb "brown" title "M = 200.29 gm", h(x) lc rgb "brown", "fixedforce.csv" u 1:5 pt 7 lc rgb "magenta" title "M = 100.01 gm", i(x) lc rgb "magenta"
+
+
+fit [0:3] f(x) "fixedmass.csv" u 1:2 via c1,v1,a1
+fit [0:3] g(x) "fixedforce.csv" u 1:3 via c2,v2,a2
+fit [0:3] h(x) "fixedforce.csv" u 1:4 via c3,v3,a3
+fit [0:3] i(x) "fixedforce.csv" u 1:5 via c4,v4,a4
+
+
+f(x) = c1 + v1*x + 0.5*a1*x**2
+
+g(x) = c2 + v2*x + 0.5*a2*x**2
+
+h(x) = c3 + v3*x + 0.5*a3*x**2
+
+i(x) = c4 + v4*x + 0.5*a4*x**2
+
+
+
+

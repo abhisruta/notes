@@ -1,0 +1,235 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{tabu}
+\usepackage[labelfont=bf, skip = 5pt, font = small]{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[style=chem-acs, article=true]{biblatex}
+\addbibresource{referencs.bib}
+
+\setlength{\parskip}{1em} 
+\setlength{\parindent} {0em}
+\begin{document}
+
+\begin{center}
+    \huge{Verification of Newton's Second Law of Motion} \\[20pt]
+    \large{PH1102 Course: Experiment II} \\[10pt]
+    \large{Rutvik Mahajan, 21ms144}
+\end{center}
+
+\vspace{5cm}
+
+\hrulefill
+ 
+\section{Newton's Second Law}
+Sir Isaac Newton stated that the Force F that would be required to move a body of given mass with an acceleration  would be follow the relation 
+
+\begin{equation}
+    F\,\propto\,a   
+\end{equation}
+
+He also stated that the same force required to move a body of mass  would be proportional to the mass , that is,
+
+\begin{equation}
+    F\,\propto\,m
+\end{equation}
+
+Thus, he was able to conclude that 
+
+   \[ F\,\propto\,ma\]
+
+Now, introducing a proportionality constant k, we can say, 
+
+\begin{equation}
+    F = kma
+\end{equation}
+
+For the sake of convenience, we choose the unit and dimension of force such that k is unit and dimensionless
+
+And thus, we get the equation that is notoriously known as Newton's Second Law, 
+\begin{equation}
+    F = ma 
+\end{equation}
+
+\section{The Terms}
+\subsection{The system (m)}
+The body that is being studied and is being moved under the influence of the applied force is called the system and it is described by its mass m.
+For the sake of this experiment we shall be tuning this factor by loading the slider with different weight blocks.
+
+\subsection{The action (F)}
+For this experiment, we shall be hanging the weight and shall let the force of gravitational attraction be the action that we shall term as F. This force is proportional to the acceleration to gravity and the mass of the hanging weight, which is what we shall be attempting to prove in this experiment as well.
+This factor can be controlled by changing the hanging weight.
+
+\subsection{The response (a)}
+This is to be measured using the experimental setup and the post processing of the data. We shall be doing this by measuring position as a function of time. In laboratory, we shall use a camera system to measure the position at regular time intervals.
+
+\vspace{3cm}
+
+\section{Apparatus}
+\begin{itemize}
+    \item  Tracking Camera
+    \item Air Track Setup
+    \item Slider
+    \item Air Pump to adjust air flow
+along the track on which the slider moves
+    \item Weights which can be put on the slider and the
+pulley
+    \item The Videocom software
+\end{itemize}
+
+\section{Diagram}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{WhatsApp Image 2022-03-02 at 23.20.38.jpeg}
+    \caption{The diagram of the apparatus}
+    \label{fig:fig1}
+\end{figure}
+
+\vspace{2cm}
+
+\section{Experimental Setup}
+The hanging weight is connected to a movable setup which is a cart or a slider. We shall use an electro-magnetic system to release the cart/slider as and when we are ready, We use an air pump to reduce the frictional force the cart/slider may experience. Note that this does not make it entirely frictionless, though. The surface the cart/slider would travel would be a horizontal one for best calculations and results.
+
+\section{Working Formula}
+Let T be the tension in the string that is connecting slider and the hanging weights:
+
+For the vertical axis, for the hanging weight m,
+\begin{equation}
+    T = mg - ma
+\end{equation}
+
+For the horizontal axis, for the slider M,
+\begin{equation}
+    T = Ma + \mu Mg
+\end{equation}
+
+Here g is the acceleration due to gravity and $\mu$ is the coefficient of friction. 
+
+Using equations (5) and (6), we can conclude that:
+
+\begin{equation}
+    a = \frac{(mg - \mu Mg)}{(m + M)} \\
+      = g\frac{(m - \mu M)}{(m + M)}
+\end{equation}
+
+Due to the air pump we use, we can basically assume $\mu$ to be zero
+
+\begin{equation}
+    a = \frac{mg}{(M + m)} 
+\end{equation}
+
+Thus, from equation (8), we can observe that:
+\begin{center}
+    (i) a $\propto$ F 
+
+    (ii) a $\propto \frac{1}{(M+m)}$
+\end{center}
+
+\vspace{3cm}
+
+\section{Fixed Mass Case}
+We vary the mass m, which is the hanging weight, to generate six different cases.
+\subsection{Displacement against time}
+
+We have taken values of m as the following:
+\begin{itemize}
+     \item m = 4.13 gm as Yellow and its fit is y(x)
+    \item m = 3.45 gm as Red and its fit is g(x)
+    \item m = 2.76 gm as Green and its fit is h(x)
+    \item m = 2.08 gm as Blue and its fit is i(x)
+    \item m = 1.39 gm as Black and its fit is j(x)
+    \item m = 0.70 gm as Purple and its fit is k(x)
+\end{itemize}
+ 
+The plotted graphs of x vs t as their best fits are as shown in the graph below.
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width = \textwidth]{x_vs_t_const_mass.jpeg}
+    \caption{The graph of displacement against time}
+    \label{fig:fig2}
+\end{figure}
+
+Here from the fitting is done with the expression 
+\begin{equation}
+    f(x) = c + ux + \frac{1}{2}ax^2
+\end{equation}
+and, for each of the six plots, the values of c, u, a were labelled as (c1, c2,..., c6),(u1, u2, ..., u6),(a1, a2, ..., a6) respectively. 
+
+The six attached photos shall describe the Final Chosen Parameters, Asymptotic Standard Error and the Correlation Matrix of the Fit Parameters for the six cases.
+
+\vspace{1cm}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \textwidth]{Parameter1.jpeg}
+    \caption{Fitting data for y(x) graph}
+    \label{fig:fig3}
+\end{figure}
+
+\vspace{2cm}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \textwidth]{Paramter2.jpeg}
+    \caption{Fitting data for g(x) graph}
+    \label{fig:fig4}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \textwidth]{Parameter3.jpeg}
+    \caption{Fitting data for h(x) graph}
+    \label{fig:fig5}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \textwidth]{Parameter4.jpeg}
+    \caption{Fitting data for i(x) graph}
+    \label{fig:fig6}
+\end{figure}
+
+\vspace{8cm}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \textwidth]{Parameter5.jpeg}
+    \caption{Fitting data for j(x) graph}
+    \label{fig:fig7}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \textwidth]{Parameter6.jpeg}
+    \caption{Fitting data for k(x) graph}
+    \label{fig:fig8}
+\end{figure}
+
+\vspace{8cm}
+
+Thus, the following are the values of acceleration, deduced from the different cases of m.
+
+\begin{table}[h]
+    \centering 
+    \caption{Values of acceleration}
+    \begin{tabu}{*{3}{X[C]}}
+         \toprule
+         \textbf{Function} & {Value of m} & {Value of acceleration} \\
+         \midrule
+         y(x) & 4.13gm & 0.335715  \\
+         g(x) & 3.45gm & 0.276376 \\
+         h(x) & 2.76gm & 0.212711 \\
+         i(x) & 2.08gm & 0.160061 \\
+         j(x) & 1.39gm & 0.0917888 \\
+         k(x) & 0.70gm & 0.0397911 \\
+         \bottomrule
+    \end{tabu}
+    \label{tab:Acceleration for constant mass case}
+\end{table}
+\hline
+
+\end{document}
