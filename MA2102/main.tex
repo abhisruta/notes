@@ -1,0 +1,397 @@
+\documentclass[11pt, a4paper, abstract=true]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{multirow}
+
+\def\arraystretch{1.20}
+
+% \clearpairofpagestyles
+\setkomafont{pagenumber}{\itshape}
+\KOMAoptions{}
+\ohead{\footnotesize \textbf{\leftmark}}
+\ihead{\footnotesize \textsc{Linear Algebra I}}
+\cfoot{\pagemark}
+\begin{document}
+    \subject{
+    MA2102 (Linear Algebra I): Internal Assesment
+}
+\title{
+    \huge Solution to Presentation Problems: Set 6
+}
+\author{
+    Abhisruta Maity (Group 6)\\
+    {\normalsize 21MS006}
+    \plusemail{am21ms006@iiserkol.ac.in}
+}
+\date{}
+\publishers{
+    \normalsize \emph{Indian Institute of Science Education and Research, Kolkata \\
+    Mohanpur, West Bengal, 741246, India}
+}
+\maketitle
+\tableofcontents
+% \par\noindent\rule{\textwidth}{1pt}
+
+\newpage
+
+\section{Finding the Dimension}
+
+\begin{problem*}
+    Compute the dimension of \(S = \{a+b\sqrt{2} + c\sqrt{3} + d\sqrt{6} : a,b,c,d \in \QQ\}\) as a vector space over \(\QQ\).
+\end{problem*}
+\begin{soln}
+    We claim that the \(\dim_{\QQ}S = 4\) by constructing the basis \(\beta = \{1, \sqrt{2}, \sqrt{3}, \sqrt{6}\}\). \\ 
+    Clearly \(\beta\) is spanning by definition of the set \(S\). Consider the representation of the \(0 \in S\) in \(\beta\): Suppose there exists \(a,b,c,d \in \QQ\) such that \[a+b\sqrt{2} + c\sqrt{3} + d\sqrt{6} = 0\] which can be expressed as \[a+b\sqrt{2} + \sqrt{3}(c + d\sqrt{2}) = 0\] 
+    % therefore \[(a+b\sqrt{2})^2 - 3(c + d\sqrt{2})^2 = 0.\]
+    Suppose, \(c+d\sqrt{2} \neq 0\). Then then above expression can be rewritten as \[\sqrt{3} = \frac{a+b\sqrt{2}}{c + d\sqrt{2}}.\] Since \(\QQ[\sqrt{2}]\) is a field (we obtained this result in class), we have \[\sqrt{3} = e + f\sqrt{2},\] where \(e,f \in \QQ\). Therefore 
+    \begin{equation}
+        3 = e^2 + 2f^2 + 2ef\sqrt{2}.
+    \end{equation}
+    Clearly, \(e = f = 0\) is not possible. Let \(e = 0\). Then  \[2f^2 = 3\] which is not possible for \(f \in \QQ\) (we can easily argue by claiming that the power of 2 on the left is odd (we are allowing negative powers as well and prime-factorizing non-zero rationals), while on the right it is 0, i.e., even). Similarly, if \(f = 0\), \[e^2 = 3\] is not possible for \(e \in \QQ\). Hence, \(e, f\) both are non-zero. Thus we rewrite our Equation (1): \[\sqrt[]{2} = \frac{3-e^2-2f^2}{2ef}\] which is not possible, since \(\sqrt[]{2}\) is irrational.
+
+    Therefore, \(c + d\sqrt{2} = 0\). Notice that, \(d \neq 0\) is not possible for the irrationality of \(\sqrt{2}\). Thus if \(d = 0\), it is forced to have \(c = 0\). Therefore, \(a + b\sqrt{2} = 0\). By the similar argument as mentioned, we conclude \(b = 0\) and thus \(a = 0\). This completes the proof of the fact that \(\beta \) is linealy independent set of vectors in \(S\). Along with the spanning property, \(\beta\) is then a basis, which proves our claim.
+\end{soln}
+
+\newpage
+
+\section{Comparing Eigenvalues}
+
+\begin{problem*}
+    Let \(T: V \to V\) be an invertible linear transformation. Compare the eigenvalues of \(T\) and \(T^{-1}\).
+\end{problem*}
+\begin{soln}
+    Let \(\FF = \RR / \CC\). Suppose there exists an eigenvector \(v \in V\) (by definition, non-zero) of the linear transformation \(T\), associated to the eigenvalue \(\lambda \in \FF\). Then \[T(v) = \lambda v.\] Since \(T\) is invertible linear transformation, we have \[T^{-1}(\lambda v) = v.\] Then linearity of \(T^{-1}\) implies \[\lambda T^{-1}(v) = v.\] 
+    \begin{claim*}[1]
+        Inveritible \(T: V \to V\) will have non-zero eigenvalues, if exists.
+    \end{claim*}
+    \begin{proof}
+        Suppose 0 is an eigenvalue of \(T\). Then there exists a eigenvector (by definition, non-zero) \(v\) such that \[T(v) = 0\] associated to the eigenvalue 0. This allows us to deduce that \(\dim N(T) \geq 1\), contradicting to the injectivity of \(T\).
+    \end{proof}
+
+    Therefore, \[T^{-1}(v) = \frac{1}{\lambda} v.\] Hence we conclude \(\frac{1}{\lambda} \in \FF\) is an eigenvalue of \(T^{-1}\). Similarly, the converse will also follow: if \(\mu \in \FF\) then \(\frac{1}{\mu} \in \FF\) is an eigenvalue of \(T\), by similar arguments. Hence, \(T\) has the eigenvalue \(\lambda \in \FF\) if and only if \(T^{-1}\) has the eigenvalue \(\frac{1}{\lambda} \in \FF\).
+\end{soln}
+
+\newpage
+
+\section{Linearly Independent Eigenvectors}
+
+\begin{problem*}
+    If the matrix
+    \[A = 
+    \begin{pmatrix}
+        0 & 0 & 1\\
+        x & 1 & y\\
+        1 & 0 & 0
+    \end{pmatrix}
+    \]
+    has three linearly independent eigenvectors, then show that \(x+y = 0\).
+\end{problem*}
+\begin{soln}
+    The characteristic polynomial of the matrix is: 
+    \[p(\lambda) = \det(A - \lambda I) = \det
+    \begin{pmatrix}
+        -\lambda & 0 & 1\\
+        x & 1-\lambda & y\\
+        1 & 0 & -\lambda
+    \end{pmatrix}
+    = - (\lambda + 1)(\lambda - 1)^2.
+    \]
+    Therefore the eigenvalues are \(\lambda = \pm 1\), and the algebraic multiplicity of \(\lambda = 1\) is 2. So we have at least two linearly independent eigenvectors associated to two distinct eigenvalues. Thus the matrix will have three linealy independent eigenvectors if and only if the eigenspace \(E_1\) have dimension \(2\). To find the eigenvectors 
+    \[v = 
+        \begin{pmatrix}
+            a\\
+            b\\
+            c
+        \end{pmatrix} \in \RR^3
+    \] associated to eigenvalue \(1\), we solve \((A - I) v = 0\) for \(v\): 
+    \begin{align*}
+        \begin{pmatrix}
+            -1 & 0 & 1\\
+            x & 0 & y\\
+            1 & 0 & -1
+        \end{pmatrix}
+        \begin{pmatrix}
+            a\\
+            b\\
+            c
+        \end{pmatrix} &= 0
+    \end{align*}
+    which just translates to two linear equations: \[a = c; \quad ax + cy = 0. \] Thus \[a(x+y) = 0\] which gives rise to two cases:
+    
+    \noindent\textbf{Case: 1.} \(a = 0.\) In this case, for any \(x, y \in \RR\), we have \[v = \begin{pmatrix}
+        0\\
+        b\\
+        0
+    \end{pmatrix}.
+    \]
+    Since \(b \in \RR\) has no restriction, any \(v \in E_1\) with \(0\) in the first coordinate, will be in the span of \(
+        \begin{pmatrix}
+        0\\
+        1\\
+        0
+    \end{pmatrix}
+    \). Therefore \(\dim E_1 = 1\), which is \emph{not} the required criterion.
+    
+    \noindent\textbf{Case: 2.} \(x + y = 0\). In this case, we have no restriction on \(a, b \in \RR\). So any \(v \in E_1\) with \(x + y = 0\) can be written as 
+    \[
+        v =
+        \begin{pmatrix}
+            a\\
+            b\\
+            a
+        \end{pmatrix}
+        = a
+        \begin{pmatrix}
+            1\\
+            0\\
+            1
+        \end{pmatrix}
+        + b
+        \begin{pmatrix}
+            0\\
+            1\\
+            0
+        \end{pmatrix}
+    \]
+    i.e., in the span of 2 linearly independent vectors, which immediately tells us \(\dim E_1 = 2\), as desired.
+\end{soln}
+
+\newpage
+
+\section{Geometry in Symmetric Orthogonal Matrices}
+
+\begin{problem*}
+    Let \(T\) be a linear transformation on \(\RR^3\) whose matrix (relative to the usual basis for \(\RR^3\)) is both symmetric and orthogonal. Prove that \(T\) is either plus or minus the identity, or a rotation by \(180^{\circ}\) about some axis in \(\RR^3\), or a reflection about some two-dimensional subspace of \(\RR^3\).
+\end{problem*}
+
+\begin{soln}
+    We will treat \(\RR^3\) as the usual inner product space in this problem.
+    Given an usual ordered basis \(\beta\) of \(\RR^3\), we first notice that \[([T]_{\beta})^2= I.\] Suppose there exists an invertible matrix \(P\) such that \([T]_{\gamma} = P[T]_{\beta}P^{-1}\) is diagonal. So, it follows that \[([T]_{\gamma})^2 = P([T]_{\beta})^2 P^{-1} = PP^{-1} = I.\] By the diagonal property, we can conclude that \([T]_{\gamma}\) would be equal to one of the \(8\) matrices of order \(3 \times 3\), having \(\pm 1\) in the diagonal.
+
+    Suppose the matrix \(P\) is just a change of basis matrix which changes usual basis to another orthonormal basis, then we can observe that, those 8 matrices represent the maps with required properties.
+
+    Hence we are left to prove the following proposition:
+    \begin{proposition}
+        Every symmetric matrix (\(3 \times 3\) here) is diagonalizable. The diagonal matrix will be the matrix representation of the same map written in another orthonormal basis.
+    \end{proposition}
+    \begin{proof}
+        Since the matrix \([T]_{\beta}\) is symmetric, the eigenvalues are real. Suppose one of the eigenspace is \(E_a\). Then it contains an eigenvector, say \(v_1\). Consider the subspace \[W = \spn \{v_1\}.\] This is a \(T\)-invariant subspace. Consider the 2-dimensional subspace \[W^{\perp} = \{v \in \RR^3 : \langle v, v_1 \rangle = 0\}.\] Observe that, \(T\) is a self-adjoint map (since \([T]_{\beta}\) is symmetric), \(\forall w \in W^\perp\) we have
+        \[\langle [T]_{\beta}w, v_1 \rangle = \langle w, [T]_{\beta}v_1 \rangle = \langle w, a v_1 \rangle = a \langle w, v_1 \rangle = 0,\] i.e., \(W^{\perp}\) is \(T\)-invariant. Consider the restriction map of \(T\) on \(W^\perp\), say \(L\).
+        \begin{lemma}
+            The characteristic polynomial of \(L\) will divide the characteristic polynomial of \(T\).
+        \end{lemma}
+        \begin{proof}
+            Let \(\delta = \{w_1, w_2\}\) be an basis of \(W^\perp\). Then it can be extended to a basis of \(\RR^3\). Then the matrix representation of \(T\) will have a block diagonal form (in fact it will be symmetric): \[[T]_{\delta} = 
+            \begin{pmatrix}
+                t_{11} & t_{12} & 0 \\
+                t_{12} & t_{22} & 0 \\
+                0 & 0 & t_{33} \\
+            \end{pmatrix}
+            \]
+            The characteristic polynomial of \(T\) is then \[\det (T - x I) = \det 
+            \begin{pmatrix}
+                t_{11} - x & t_{12} & 0 \\
+                t_{12} & t_{22} -x & 0 \\
+                0 & 0 & t_{33} -x \\
+            \end{pmatrix}
+            = (t_{33} - x) \det
+            \begin{pmatrix}
+                t_{11} - x & t_{12} \\
+                t_{12} & t_{22} -x \\
+            \end{pmatrix}
+            \]
+            which is equal to \(\det (L - xI) \det (t_{33} - x)\), as desired.
+        \end{proof}
+        By factor theorem, the roots of the characteristic polynomial of \(L\) will be the roots of the characteristic polynomial of \(T\). Since all the roots of the characteristic polynomial of \(T\) is real, eigenvalues of \(L\) would be real. Choose an eigenvector of \(L\), say \(v_2\), that will be an eigenvector of \(T\) as well. Moreover, \(v_2\) is perpendicular to \(v_1\). Let \[X = \spn\{v_1, v_2\}\] and consider \(X^\perp\), which is again \(T\)-invariant subspace. Consider the restriction map of \(T\) on \(X^\perp\), say \(M\). By the similar argument, the eigenvalue of \(M\) will be the eigenvalue of \(T\). Therefore, eigenvector \(v_3\) of \(M\) will be eigenvector \(T\) as well. Moreover, \[\langle v_3, v_1 \rangle = \langle v_3, v_2 \rangle = 0\]
+        i.e., \[\theta = \{v_1, v_2, v_3\}\] is an orthogonal basis, which can be made orthonormal by scaling.
+    \end{proof}
+    With the change of basis matrix from \(\beta\) to \(\theta\), we have the required diagonal matrix, which can be interpreted geometrically to the desired properties in the statement of the problem.
+\end{soln}
+
+\newpage
+
+\section{Linear Independence of Exponentials}
+\begin{problem*}
+    Let \(\alpha_1, \dots, \alpha_n\) be distinct real numbers. Show that the \(n\) exponential functions \(e^{\alpha_1 x}, \dots e^{\alpha_n x}\) are linearly independent (over the real numbers) in \(\mathcal{F}(\RR, \RR)\), the vector space of all functions from \(\RR\) to \(\RR\).
+
+\end{problem*}
+
+\begin{soln}
+    We begin with a statement, which is very easy to prove, stated as a fact:
+    \begin{fact*}
+        Exponential function \(f: \RR \to \RR\) such that \(f(x) = e^{kx}; \quad k \in \RR\) is infinitely differentiable.
+    \end{fact*}
+    Now consider the representation of \(\mathbf{0} \in \mathcal{F}(\RR, \RR)\) (as map) in terms of the given \(n\) exponential functions:
+    \begin{equation*}
+        c_1e^{\alpha_1 x}+ \dots+ c_n e^{\alpha_n x} = \mathbf{0}
+    \end{equation*}
+    where, \(c_i \in \RR\) for each \(i = \{1,\dots, n\}\). Plugging \(x = 0\), we obtain
+    \[\sum_{i=1}^{n} c_i = 0.\]
+    Differentiating the representation of \(\mathbf{0}\) (which is possible due to the stated fact) and plugging \(x = 0\), we obtain 
+    \[\sum_{i=1}^{n} c_i \alpha_i = 0.\] Continuing this process, on the \(k\)-th step, we obtain \[\sum_{i=1}^{n} c_i \alpha_i^{k-1} = 0.\] We stop at \(n\)-th step and write all the equations in \(A\mathbf{x} = \mathbf{0}\) form: 
+    \[
+        \begin{pmatrix}
+            c_1 & c_2 & \dots & c_n\\
+            c_1\alpha_1 & c_2\alpha_2 & \dots & c_n\alpha_n\\
+            \vdots & \vdots & \ddots & \vdots\\
+            c_1\alpha_1^{n-1} & c_2\alpha_2^{n-1} & \dots & c_n\alpha_{n}^{n-1}
+        \end{pmatrix}
+        \begin{pmatrix}
+            1\\
+            1\\
+            \vdots\\
+            1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            0\\
+            0\\
+            \vdots\\
+            0
+        \end{pmatrix}
+    \] which immediately tells us that the matrix \(A\) as linear map from \(\RR^n \to \RR^n\) is not injective, so it's not full rank, which in turn says that
+    \begin{align*}
+        \det
+        \begin{pmatrix}
+            c_1 & c_2 & \dots & c_n\\
+            c_1\alpha_1 & c_2\alpha_2 & \dots & c_n\alpha_n\\
+            \vdots & \vdots & \ddots & \vdots\\
+            c_1\alpha_1^{n-1} & c_2\alpha_2^{n-1} & \dots & c_n\alpha_{n}^{n-1}
+        \end{pmatrix}
+        &= 
+        \prod_{i=1}^{n}c_i
+        \det
+        \begin{pmatrix}
+            1 & 1 & \dots & 1\\
+            \alpha_1 & \alpha_2 & \dots & \alpha_n\\
+            \vdots & \vdots & \ddots & \vdots\\
+            \alpha_1^{n-1} & \alpha_2^{n-1} & \dots & \alpha_{n}^{n-1}
+        \end{pmatrix} \\
+        &= 
+        \prod_{i=1}^{n}c_i
+        \prod_{1\leq j \leq k \leq n}(\alpha_k - \alpha_j) = 0
+    \end{align*}
+    Since, \(\alpha_i\)s are distinct, we have at least one \(c_j = 0\). After re-ordering, suppose \(c_n = 0\). We plug it in every equation we had obtained. First \(n-1\) equations will give rise to a \(n-1 \times n-1\) matrix, whose determinant for the similar reason, will be zero. Again after renaming, \(c_{n-1} = 0\). The process ends after \(n\) steps and yields \(c_1 = c_{2} = \dots = c_{n-1} = c_n = 0\), proving the linear independence.
+    % Without loss of generality, since the \(\alpha_i\)s are distinct, we assume \(\alpha_1 < \dots < \alpha_n\). Consider the representation of \(\mathbf{0} \in \mathcal{F}(\RR, \RR)\) (as map) in terms of the given \(n\) exponential functions:
+    % \begin{equation*}
+    %     c_1e^{\alpha_1 \lambda}+ \dots+ c_n e^{\alpha_n \lambda} = \mathbf{0}
+    % \end{equation*}
+    % where, \(c_i \in \RR\) for each \(i = \{1,\dots, n\}\). Since exponentials do not vanish \(\forall \lambda \in \RR\), we rewrite the above equation:
+    % \[c_n = -c_1e^{(\alpha_1-\alpha_n) \lambda}- \dots- c_n e^{(\alpha_{n-1}-\alpha_{n}) \lambda}\] which is an equality of maps, i.e., the equation is true for any \(\lambda \in \RR\). Notice that, the left side of the equation represents the constant map \(f(\lambda) = c_n\), \(\forall \lambda \in \RR\). By the definition of limit at infinity and applying algebra of limit, we observe:
+    % \[c_n = \lim_{\lambda \to \infty} c_n = -\lim_{\lambda \to \infty} c_1e^{(\alpha_1-\alpha_n) \lambda} - \dots- \lim_{\lambda \to \infty} c_{n-1} e^{(\alpha_{n-1}-\alpha_{n}) \lambda}.\] But all the exponents are negative due to assumed ordering in \(\alpha_i\)s. Therefore, the value of the limit on the right hand side is 0, implying \(c_n = 0\). We now plug this into our original equation, which yields: \[c_1e^{\alpha_1 \lambda}+ \dots+ c_{n-1} e^{\alpha_{n-1} \lambda} = \mathbf{0}.\] Applying the same procedure as done above, we obtain \(c_n = c_{n-1} = c_{n-2} = \dots = c_{1} = 0\), which proves the linear independence.
+\end{soln}
+% We have used the following notion and the claim for proving the above result.
+% \begin{remark*}
+%     We are familiar with the definition of taking limit of a function at infinity (done in Analysis I). We state it for the sake of completeness: Let \(f: \RR \to \RR\) be a real-valued function and \(A \in \RR\). We say:
+%     \[\lim_{\lambda \to \infty} f(\lambda) = A\] if \(\forall \varepsilon > 0, \exists m > 0\) such that \[\lambda > m \implies |f(\lambda) - A| < \varepsilon.\] Algebra of this notion of limit at infinity hold as usual.
+% \end{remark*}
+% By the above definition we prove the following claim:
+% \begin{claim*}
+%     Let \(f: \RR \to \RR\) such that \[f(\lambda) = e^{-kx}, \quad k > 0.\] Then the limit \[\lim_{\lambda \to \infty} f(\lambda) = 0.\]
+% \end{claim*}
+% \begin{proof}
+%     For \(k > 0\) and for any \(\lambda \in \RR\) we have \(e^{kx} > 1 + kx \implies e^{-kx} < \frac{1}{1+kx}\). Choose \(m = \frac{1}{k\varepsilon} - \frac{1}{k} \in \RR\) and observe that for \(\lambda > m\) we have \[|e^{-kx}| = e^{-kx} < \frac{1}{1+kx} < \frac{1}{1+k\frac{1}{k\varepsilon} - k\frac{1}{k}} = \varepsilon.\] 
+% \end{proof}
+
+\newpage
+
+\section{Union becomes Subspace}
+
+\begin{problem*}
+    Let \(W_1\), \(W_2\) be subspaces of a vector space \(V\). Determine when \(W_1 \cup W_2\) is a subspace of \(V\).
+\end{problem*}
+\begin{soln}
+    We claim that \(W_1 \cup W_2\) is a subspace of \(V\) if and only if \(W_1 \subseteq W_2\) or \(W_2 \subseteq W_1\). 
+
+    If \(W_1 \subseteq W_2\) then \(W_1 \cup W_2 = W_2\) which is a subspace of \(V\). Otherwise \(W_2 \subseteq W_1\) then \(W_1 \cup W_2 = W_1\) which is a subspace of \(V\).
+
+    To show the converse, suppose to the contrary that \(W_1 \cup W_2\) is a subspace of \(V\) but \(W_1 \nsubseteq W_2\) and \(W_2 \nsubseteq W_1\). Let \(v_1 \in W_1\) and \(v_2 \in W_2\) such that \(v_1 \notin W_2\) and \(v_2 \notin W_1\). Since both of them belong to the subspace \(W_1 \cup W_2\), we have \(v_1 + v_2 \in W_1 \cup W_2\). Hence either \(v_1 + v_2 \in W_1\) or \(v_1 + v_2 \in W_2\). 
+
+    \noindent\textbf{Case: 1.} \(v_1 + v_2 \in W_1\). Since \(v_1 \in W_1\) and \(W_1\) is a subspace, we have \(-v_1 \in W_1\). But that implies that \(v_1 + v_2 - v_1 = v_2 \in W_1\), which is a contradiction.
+
+    \noindent\textbf{Case: 2.} \(v_1 + v_2 \in W_2\). Since \(v_2 \in W_2\) and \(W_2\) is a subspace, we have \(-v_2 \in W_2\). But that implies that \(v_1 + v_2 - v_2 = v_1 \in W_2\), which is a contradiction.
+\end{soln}
+
+\newpage
+
+\section{Finding 2-dimensional Invariant Subspace}
+
+\begin{problem*}
+    Let \(T: \RR^n \to \RR^n\) be a linear transformation, where \(n > 1\). Prove that there is a 2-dimensional subspace \(V \subseteq \RR^n\) such that \(T(V) \subseteq V\).
+\end{problem*}
+
+\begin{soln}
+    We break the problem into 3 cases:
+
+    \noindent\textbf{Case: 1.} If we have at least two distinct real eigenvalues, then we are done by choosing the corresponding linearly independent eigenvectors: Suppose \(\lambda_1 \neq \lambda_2 \in \RR\) and \(v_1, v_2 \in \RR^n\) are non-zero vectors such that \[T(v_1) = \lambda_1 v_1; \quad T(v_2) = \lambda_2 v_2\]
+    Then consider the subspace 
+    \[W_1 = \spn\{v_1, v_2\}\]
+    and observe the following claim:
+    \begin{claim*}[1]
+        \(W_1\) is 2 dimensional \(T\)-invariant subspace, i.e., \(T(W_1) \subseteq W_1\).
+    \end{claim*}
+    \begin{proof}
+        Let \(v \in W_1\). Then \(v = c_1v_1 + c_2v_2\), for some \(c_1, c_2 \in \RR\). So \[T(v) = T(c_1v_1 + c_2v_2) = c_1T(v_1) + c_2T(v_2) = c_1\lambda_1 v_1 + c_2\lambda_2 v_2 \in W_1.\]
+        Therefore \(W_1\) is \(T\)-invariant. Also note that, by definition along with the linear independence \(\{v_1, v_2\}\) is a basis for \(W_1\), which makes it 2-dimensional, as desired.
+    \end{proof}
+    
+    \noindent\textbf{Case: 2.} No distinct real eigenvalue and at least one irreducible (over \(\RR\)) quadratic factor (i.e., \emph{the} eigenvalue has multiplicity \(< n\)) of the characteristic polynomial of \(T\). The existence of this irreducible (over \(\RR\)) quadratic factor is due to the fact that we are working with the real coefficients, so the complex roots comes in conjugate pair.
+    % Since \(\dim \RR^n = n \geq 2\), either all the roots are non-real (for \(n\) even), in which case all those roots come in conjugate pair, thus a quadratic polynomial factor can be taken out, \emph{or,} exactly one of the root is real (for \(n\) odd), in which case again we can take out a quadratic factor by similar argument.
+
+    Suppose, \(m(\lambda)\) is a polynomial of smallest degree \(k\) such that \(T\) satisfies it\footnote[1]{Such polynomial of a matrix is called the minimal polynomial. By division algorithm in polynomials, we observe that minimal polynomial divides characteristic polynomial.}: \[m(T) = \mathbf{O}_{n \times n}\]
+    Consider \[S = \{j \in \NN: \exists p \in \mathcal{P}_j(\RR), \; p(T) = \mathbf{O}_{n \times n}\}\]
+    By Cayley-Hamilton theorem, we can find a polynomial of degree \(n\) which is satisfied by the matrix \(T\). So \(S\) is non-empty. By well-ordering principle then the smallest degree polynomial \(m(\lambda)\) exists.
+    \begin{claim*}[2]
+        In this case, \(m(\lambda)\) will have at least one irreducible quadratic factor and at most one linear factor.
+        % \(m(\lambda)\) can admit at most 1 linear factor \(\in \RR\).
+    \end{claim*}
+    \begin{proof}
+        Suppose to the contrary that \(m(\lambda)\) is factored into at least 2 linear factors over \( \RR\). Then we can write \[m(\lambda) = (\lambda - a)(\lambda - b)r(\lambda)\] for some \(a,b \in \RR\)
+        By definition, \[m(T) = (T - aI)(T - bI)r(T) = \mathbf{O}_{n \times n}\] where \(I\) is the identity matrix of order \(n\). Observe that \((T - bI)r(T)\) is a \(k-1\) degree polynomial evaluated at \(T \in M_n(\RR)\), thus \(\neq \mathbf{O}_{n \times n}\). So there must exist non-zero \(v \in \RR^n\) such that \[(T - bI)r(T)v \neq \mathbf{0}.\] Then \[m(T)v = (T - aI)(T - bI)r(T)v = (T - aI)\big((T - bI)r(T)v\big) = \mathbf{0}.\] But this shows that \((T - bI)r(T)v\) is an eigenvector associated to the eigenvalue \(a\). Proceeding in similar way and switching brackets (because we are working only with \(T\) and \(I\), which are compatible with commutativity), we obtain \((T - aI)r(T)v\) is an eigenvector associated to the eigenvalue \(b\). Which says that \(a, b\) both are roots of the characteristic polynomial of \(A\). But the starting assumption of this case forces to conclude that \(a = b\). But now this increases the multiplicity of the eigenvalue \(a\) to 2, which again contradicts our assumption.
+
+        If \(m(\lambda)\) contains 0 linear factor, then it must contain at least one quadratic factor, otherwise degree will become 0. 
+    
+        If \(m(\lambda)\) contains 1 linear factor \(\lambda - a\) and no other factors, then not only \(a\) will be an eigenvalue, but note that we also have \(m(T) = T - aI = \mathbf{O}_{n \times n} \implies T = aI\), and thus the characteristic polynomial of \(aI\) will become \(\det(aI-\lambda I) = (a-\lambda)^n\), which contradicts our assumption about multiplicity of eigenvalues. Therefore, it will contain at least one quadratic factor as well.
+    \end{proof}
+
+    Therefore, we can assume \[m(\lambda) = q(\lambda)r(\lambda)\] where \(q,r\) are polynomials and \(q\) is a monic quadratic factor, say \(q(\lambda) = \lambda^2 + a\lambda + b\).
+
+    By definition of minimality, \(r(T) \neq \mathbf{O}_{n \times n}\), unless \(r\) is of degree 0. In that case also \(r(T)\) turns out to be identity matrix, which is non-zero. Taking a level higher, we can also claim \(T r(T) \neq \mathbf{O}_{n \times n}\) for similar reason. Hence \(\exists v \neq \mathbf{0} \in \RR^n\) such that \[Tr(T)v \neq \mathbf{0}.\] It follows that \(r(T)v \neq \mathbf{0}\) as well. We now make the following claim:
+    \begin{claim*}[3]
+        The subspace \(W_2 := \spn\{r(T)v, Tr(T)v\}\) is 2-dimensional and \(T\)-invariant.
+    \end{claim*}
+    \begin{proof}
+        First we show that \(W_2\) is \(T\)-invariant. Consider any \(w \in W_2\). Then \(\exists c_1, c_2 \in \RR\) such that \[c_1r(T)v + c_2Tr(T)v = w.\] Observe that, 
+        % To prove it is 2-dimensional subspace, it suffices to prove the linear independence of the spanning set. Consider the representation of \(\mathbf{0} \in \RR^n\): \[c_1r(T)v + c_2Tr(T)v = \mathbf{0}.\] Applying \(T\) both sides we get 
+        \begin{align*}
+            T (w) = c_1Tr(T)v + c_2T^2r(T)v &= - c_2br(T)v + (c_1-c_2a)Tr(T)v + c_2(T^2+aT+b)r(T)v \\ &= - c_2br(T)v + (c_1-c_2a)Tr(T)v + c_2q(T)r(T)v \\ &=  - c_2br(T)v + (c_1-c_2a)Tr(T)v \in W_2.
+        \end{align*}
+    \end{proof}
+    To prove it is 2-dimensional, we first consider the restriction of \(T\) on \(W_2\), say \(L\). Note that, \(\forall w \in W_2\) we have \[q(T)w = \mathbf{0} \implies q(L) w = \mathbf{0}\] which means \(q(L)\) is 0 map on \(W_2\). This means the minimal polynomial of \(L\) divides \(q(x)\). But \(q(x)\) is irreducible quadratic over \(\RR\). Hence the minimal polynomial of \(L\) is just the quadratic \(q(x)\). Now suppose the spanning set of \(W_2\) is linearly dependent. Then there exists \(c \neq 0 \in \RR\) such that \[Tr(T)v = cr(T)v\] which means that \(\forall w \in W_2\), we have \((T-cI)w = \mathbf{0}\). Considering the restriction map we have \[L - cI = 0\] as a map equality, which violates the minimality of degree of the quadratic \(q(x)\).
+    Hence, it is 2-dimensional.
+    
+    \noindent\textbf{Case: 3.} If there is no quadratic factor and same eigenvalue \(a \in \RR\) is repeated \(n\)-times. Then the characteristic polynomial is \[p(x) = (x - a)^n\]
+    Therefore, by Cayley-Hamilton theorem, \[p(T) = (T - aI)^n = \mathbf{O}_{n\times n}\]
+    Consider the null spaces of the following linear maps: \[T - aI : \RR^n \to \RR^n; \quad (T - a I)^2 : \RR^n \to \RR^n\]
+    \begin{claim*}[4]
+        If \(\dim N(T-aI) \geq 2\), there exists 2-dimensional subspace \(W_3\) of it which is \(T\)-invariant.
+    \end{claim*}
+    \begin{proof}
+        Choose any two linearly independent vector \(v_1, v_2 \in N(T-aI)\), and consider the subspace \(W_3\) spanned by \(\{v_1, v_2\}\). Then \[(T-aI)T(v_i) = T(T-aI)v_i = T(\mathbf{0}) =  \mathbf{0}\in N(T-aI)\] for \(i =1,2\), which shows the \(T-\)invariance.
+    \end{proof}
+    \begin{claim*}[5]
+        If \(\dim N(T-aI) = 1\) then
+        \[N(T - a I) \subset N(T-a I)^2 .\] 
+        
+        % and \(N(T - aI)^2\) is 2-dimensional \(T\)-invariant subspace.
+    \end{claim*}
+    \begin{proof}
+        Notice that, it is clearly evident that \(N(T - aI) \subseteq N(T-a I)^2\). We will prove that \(N(T-aI)^2 \neq N(T - aI)\). Suppose to the contrary, \(N(T-aI)^2 = N(T - aI)\). Let \(v \in N(T-aI)^3\) then \[(T-aI)^3v = (T-aI)(T-aI)^2v = \mathbf{0}\]
+        which means either \((T-aI)^2v = \mathbf{0}\), in which case, \(v \in N(T-aI)^2\), \emph{or,} \((T-aI)^2v \neq \mathbf{0}\). So, \((T-aI)v \neq \mathbf{0}\) as well. In this case we observe that, \[(T-aI)^3v = (T-aI)^2(T-aI)v = \mathbf{0}\] i.e., \((T-aI)v \in N(T-aI)^2 = N(T-aI)\), which also implies \[(T-aI)^2v = \mathbf{0}\] which is a contradiction. Therefore by proceeding inductively, we have \[N(T-aI) = N(T-aI)^2 = \dots = N(T-aI)^n = \RR^n\] since \(p(T) = (T-aI)^n = \mathbf{O}_{n\times n}\), which is impossible since \(\dim N(T-aI) = 1 < n = \dim \RR^n\).
+    \end{proof}
+    Therefore, \(\dim N(T-aI)^2 \geq 2\). It follows that there exists 2-dimensional subspace \(W_4\) of it which is \(T\)-invariant, similar to Claim 4.
+\end{soln}
+
+\end{document}
